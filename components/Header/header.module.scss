@@ -1,0 +1,7 @@
+.menu__item {
+  color: green;
+
+  & :hover {
+    color: red;
+  }
+}
