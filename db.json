@@ -1,7 +1,28 @@
 {
   "products": [
-    { "id": 1, "name": "Product A" },
-    { "id": 2, "name": "Product B" },
-    { "id": 3, "name": "Product C" }
+    {
+      "id": 1,
+      "name": "Product A"
+    },
+    {
+      "id": 2,
+      "name": "Product B"
+    },
+    {
+      "id": 3,
+      "name": "Product C"
+    }
+  ],
+  "users": [
+    {
+      "email": "tuantm@gmail.com",
+      "password": "$2a$10$g2Ftcs3Avbve0l9PnMaUXuncHPhGhk8sLT13hW8GofS0gi5djAWby",
+      "id": 1
+    },
+    {
+      "email": "tuantma@gmail.com",
+      "password": "$2a$10$pmGGBaqXHxLiFpDHHtJd5.JPwcHTZZtR0nQ1QOUCSgN1wQik45wqa",
+      "id": 2
+    }
   ]
 }
