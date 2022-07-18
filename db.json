@@ -23,6 +23,11 @@
       "email": "tuantma@gmail.com",
       "password": "$2a$10$pmGGBaqXHxLiFpDHHtJd5.JPwcHTZZtR0nQ1QOUCSgN1wQik45wqa",
       "id": 2
+    },
+    {
+      "email": "user@gmail.com",
+      "password": "$2a$10$i35rb3nCxDlyzc6EWRcX5uYqgXmblbS8bntOiSmlQabomV7Yyo6NS",
+      "id": 3
     }
   ]
 }
