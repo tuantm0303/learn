@@ -20,7 +20,13 @@ const Home: NextPage = () => {
       {data.map((user: any, index: any) => (
         <div key={index}>{user.email}</div>
       ))}
-      <button onClick={() => register()}>Register</button>
+      <button
+        onClick={() =>
+          register({ email: "admin@gmail.com", password: "123456" })
+        }
+      >
+        Register
+      </button>
     </div>
   );
 };
