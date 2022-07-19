@@ -1,43 +1,44 @@
-import { GetStaticProps, GetStaticPropsContext } from "next";
 import Link from "next/link";
 import React from "react";
-import useSWR from "swr";
+import useProducts from "../../hooks/use-product";
 
-type ProductsProps = {
-  products: any[];
-};
-
-const url = "http://localhost:3001/products";
-
-const fetcher = async () => await (await fetch(url)).json();
-
-// client
 const ProductPage = () => {
-  const { data, error } = useSWR(url, fetcher, { dedupingInterval: 5000 });
-  if (error) return <div>failed to load</div>;
-  if (!data) return <div>loading...</div>;
+  const { data, error } = useProducts();
+  console.log(data);
+  if (error) return <div>error</div>;
+  if (!data) return <div>loading</div>;
   return (
-    <div>
-      {data.map((item: any) => (
-        <div key={item.id}>
-          <Link href={`/products/${item.id}`}>{item.name}</Link>
-        </div>
-      ))}
+    <div className="container">
+      <Link href="products/add">
+        <button className="btn btn-warning">Add</button>
+      </Link>
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item: any, index: any) => (
+            <tr key={index}>
+              <th scope="row">{index + 1}</th>
+              <td>{item.name}</td>
+              <td>{item.price}</td>
+              <td>
+                <button className="btn btn-warning">
+                  <Link href={`/products/edit/${item.id}`}>Edit</Link>
+                </button>
+                <button className="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
-};
-
-// server
-export const getStaticProps: GetStaticProps<ProductsProps> = async (
-  context: GetStaticPropsContext
-) => {
-  const data = await (await fetch(`http://localhost:3001/products`)).json();
-  if (!data) return { notFound: true };
-  return {
-    props: {
-      products: data,
-    },
-  };
 };
 
 export default ProductPage;
